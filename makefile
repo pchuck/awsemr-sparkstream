@@ -13,7 +13,7 @@ EMR_CLUSTER_NAME=emr-spark-cluster
 EMR_RELEASE_LABEL=emr-4.3.0
 EMR_INSTANCE_TYPE=m3.xlarge
 EMR_INSTANCE_COUNT=3
-EMR_OPTIONS=--applications Name=Spark --use-default-roles
+EMR_OPTIONS=--applications Name=Spark --use-default-roles --enable-debugging
 create_cluster:
 	aws emr create-cluster --profile ${AWS_PROFILE} --name "$(EMR_CLUSTER_NAME)" --release-label $(EMR_RELEASE_LABEL)  --ec2-attributes KeyName=${AWS_KEY_NAME} --instance-type $(EMR_INSTANCE_TYPE) --instance-count $(EMR_INSTANCE_COUNT) $(EMR_OPTIONS)
 
